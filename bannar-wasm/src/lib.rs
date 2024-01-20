@@ -1,4 +1,4 @@
-use wasm_bindgen::prelude::wasm_bindgen;
+use std::ffi::CString;
 
 const BANNAR: &str = r#"
  ███▄ ▄███▓ ▄▄▄       ██▀███   ▄████▄   ▒█████  
@@ -13,14 +13,16 @@ const BANNAR: &str = r#"
                               ░                 
 "#;
 
-#[wasm_bindgen()]
-extern "C" {
-    #[wasm_bindgen(js_namespace = console)]
-    pub fn log(x: &str);
+#[no_mangle]
+pub fn get_bannar() -> *const i8 {
+    let bannar = CString::new(BANNAR).expect("CString::new failed");
+    bannar.into_raw()
 }
 
-#[wasm_bindgen()]
-pub fn show_bannar() -> u8 {
-    log(BANNAR);
-    0
+#[no_mangle]
+pub extern "C" fn free(ptr: *const i8) {
+    unsafe {
+        if ptr.is_null() { return }
+        let _ = CString::from_raw(ptr as *mut i8);
+    }
 }
