@@ -8,5 +8,5 @@ sudo apt-get install -y mingw-w64
 ```sh
 cargo build --release --package=bannar  # for linux (ubuntu)
 cargo build --release --package=bannar --target=x86_64-pc-windows-gnu  # for windows
-cargo build --release --package=bannar-wasm --target=wasm32-unknown-unknown # for ubuntu
+cargo build --release --package=bannar-wasm --target=wasm32-unknown-unknown # for WebAssembly
 ```
