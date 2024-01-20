@@ -11,6 +11,9 @@ const BANNAR: &str = r#"
 ░      ░     ░   ▒     ░░   ░ ░        ░ ░ ░ ▒  
        ░         ░  ░   ░     ░ ░          ░ ░  
                               ░                 
+
+
+developer toyko2001@gmail.com
 "#;
 
 #[no_mangle]
